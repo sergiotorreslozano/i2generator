@@ -53,15 +53,15 @@ This project uses an embedded H2 database for storing data related to the genera
 ---
 
 ## Limitations
-Not Production-Ready: This project is intended as a playground for AI image generation and editing. It is not ready for deployment in a production environment as is.
-OpenAI API: Since this project depends on OpenAI's API, ensure that your usage is in line with OpenAI's API limits and pricing structure.
+- **Not Production-Ready**: This project is intended as a playground for AI image generation and editing. It is not ready for deployment in a production environment as is.  
+- **OpenAI API**: Since this project depends on OpenAI's API, ensure that your usage is in line with OpenAI's API limits and pricing structure.
 
 ---
 
 ## Future Improvements
-Implement more advanced image editing features.
-Enhance security and performance for production deployment.
-Expand AI capabilities to support other models and more advanced features.
+- Implement more advanced image editing features.
+- Enhance security and performance for production deployment.
+- Expand AI capabilities to support other models and more advanced features.
 
 ---
 
