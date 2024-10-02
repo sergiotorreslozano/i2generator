@@ -1,0 +1,112 @@
+/* Custom styles for the User List page */
+
+/* Add some spacing between user list items */
+.user-item {
+    margin-bottom: 1rem;
+}
+
+/* Style user names */
+.user-item a {
+    color: #3273dc;  /* Bulma's primary color */
+    text-decoration: none;
+    font-size: 1.25rem;  /* Make the font slightly larger */
+}
+
+.user-item a:hover {
+    color: #363636;  /* Darker shade for hover */
+}
+
+/* Custom size for user icons */
+.user-item img {
+    border-radius: 50%;  /* Make user icons circular */
+    width: 50px;
+    height: 50px;
+}
+
+/* Mobile responsiveness (override for smaller screens) */
+@media (max-width: 768px) {
+    .user-item img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .user-item a {
+        font-size: 1rem;
+    }
+}
+
+/* Custom styles for the error page */
+
+/* Add extra space below the error message */
+.hero .subtitle {
+    margin-bottom: 2rem;
+}
+
+/* Style the return button */
+.hero .button {
+    border-radius: 30px;
+    padding: 1rem 2rem;
+}
+
+/* Adjust text color for better readability if needed */
+.hero.is-primary .title,
+.hero.is-primary .subtitle {
+    color: #fff;
+}
+
+/* Add a soft shadow to the button */
+.hero .button {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Custom styles for the user images page */
+
+/* Adjust the spacing around the textarea */
+.field .textarea {
+    margin-bottom: 1rem;
+}
+
+/* Style for the table images to add some padding */
+table img {
+    border-radius: 5px;
+    margin-right: 1rem;
+}
+
+/* Adjust button margin for consistency */
+.button {
+    margin-top: 1rem;
+}
+
+/* Modal styling */
+.modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal.is-active {
+    display: flex;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+.image.is-half-size {
+    max-width: 50%;
+    margin: 0 auto;
+}

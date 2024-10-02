@@ -1,0 +1,25 @@
+<!-- image-modal.html -->
+<div th:fragment="image-modal" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div id="image-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+            <!-- The large image displayed inside the modal -->
+            <img src="" alt="Large Image" id="modal-image">
+        </div>
+        <!-- Download and Close buttons -->
+        <div class="buttons is-centered">
+            <!-- Download button - the href will be dynamically set by JavaScript -->
+            <a id="modal-download-button" href="#" download class="button is-info is-small">
+                Download
+            </a>
+
+            <!-- Close button next to Download -->
+            <button class="button is-light is-small" onclick="closeModal()">
+                Close
+            </button>
+        </div>
+
+        <!-- Close button for modal -->
+        <button class="modal-close is-large" aria-label="close" onclick="closeModal()"></button>
+    </div>
+</div>

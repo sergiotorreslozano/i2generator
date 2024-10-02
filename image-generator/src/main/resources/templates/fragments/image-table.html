@@ -1,0 +1,55 @@
+<!-- image-table.html -->
+<div th:fragment="image-table" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <!-- Table for displaying user images -->
+    <table class="table is-fullwidth is-striped">
+        <thead>
+        <tr>
+            <th>Download</th>
+            <th>Image</th>
+            <th>Prompt</th>
+            <th>Modified Prompt</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the images and display prompt, modifiedPrompt, and base64 image -->
+        <tr th:each="image : ${images}">
+            <td>
+                <!-- Download link -->
+                <a th:href="@{/api/images/download/{id}(id=${image.id})}" download class="button is-small is-info">
+                    Download
+                </a>
+            </td>
+            <td>
+                <!-- Display base64 image with click event for modal -->
+                <img th:src="'data:image/jpeg;base64,' + ${image.b64json}"
+                     th:id="'image-' + ${image.id}"
+                     class="image is-clickable"
+                     width="200" height="200"
+                     th:onclick="'openModal(' + ${image.id} + ')'"/>
+
+            </td>
+            <td th:text="${image.prompt}">Prompt</td>
+            <td th:text="${image.modifiedPrompt}">Modified Prompt</td>
+            <td>
+
+                <!-- Delete button as form submission with DELETE method -->
+                <form th:action="@{/view/users/{userId}/images/{imageId}(userId=${user.uuid}, imageId=${image.id})}" method="post" >
+                    <!-- Hidden input to simulate DELETE method -->
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit" class="button is-small is-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Include the modal fragment here -->
+    <div th:replace="~{fragments/image-modal :: image-modal}"></div>
+
+    <!-- Back to Index Link (at the bottom) -->
+    <a th:href="@{/view/}" class="button is-link is-light">Back to Index</a>
+    <script th:src="@{/js/image-view-modal.js}"></script>
+
+</div>>

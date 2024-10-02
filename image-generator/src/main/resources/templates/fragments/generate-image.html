@@ -1,0 +1,69 @@
+<div th:fragment="generate-image" xmlns:th="http://www.w3.org/1999/xhtml">
+    <a th:href="@{/view/}" class="button is-link is-light">Back to Index</a>
+
+    <!-- Form for Image Generation -->
+    <form id="imageGenForm" th:action="@{'/view/users/' + ${user.uuid} + '/images'}" enctype="multipart/form-data" method="post" th:object="${imageForm}" class="box">
+        <div class="field">
+            <label class="label" for="prompt">Enter a Prompt:</label>
+            <div class="control">
+                <textarea id="prompt" th:field="*{prompt}" class="textarea" placeholder="Describe your image..." required></textarea>
+            </div>
+        </div>
+
+        <!-- Hidden input for user ID -->
+        <input type="hidden" name="userId" th:attr="value=${user.uuid}" />
+
+        <!-- New field for 'static' -->
+        <div class="field">
+            <label class="checkbox" for="staticImage">
+                <input type="checkbox" id="staticImage" th:field="*{staticImage}" />
+                Is this a static image
+            </label>
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary">Generate Image</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Image Generation Panel (Initially Hidden) -->
+<!--    <div id="imageGenPanel" class="box" style="display: none;">-->
+<!--        <h3>Image Generation</h3>-->
+<!--        <p><strong>Created Time:</strong> <span id="createdTime"></span></p>-->
+<!--        <p><strong>Status:</strong> <span id="status">Generating...</span></p>-->
+<!--        <p><strong>Prompt:</strong> <span id="promptText"></span></p>-->
+
+<!--        &lt;!&ndash; Spinning wheel (loader) &ndash;&gt;-->
+<!--        <div id="imageLoader">-->
+<!--            <div class="spinner">Loading...</div>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Generated image (hidden by default) &ndash;&gt;-->
+<!--        <div id="generatedImage" style="display: none;">-->
+<!--            <img id="imagePreview" alt="Generated Image" style="max-width: 100%;"/>-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; Buttons &ndash;&gt;-->
+<!--        <button id="closePanelBtn" class="button is-light">Close</button>-->
+<!--        <a href="/view/images" class="button is-link">Go to Images</a>-->
+<!--    </div>-->
+</div>
+
+<!--&lt;!&ndash; Spinner CSS &ndash;&gt;-->
+<!--<style>-->
+<!--    .spinner {-->
+<!--        border: 5px solid #f3f3f3;-->
+<!--        border-top: 5px solid #3498db;-->
+<!--        border-radius: 50%;-->
+<!--        width: 40px;-->
+<!--        height: 40px;-->
+<!--        animation: spin 1s linear infinite;-->
+<!--    }-->
+
+<!--    @keyframes spin {-->
+<!--        0% { transform: rotate(0deg); }-->
+<!--        100% { transform: rotate(360deg); }-->
+<!--    }-->
+<!--</style>-->

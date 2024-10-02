@@ -1,0 +1,43 @@
+<!-- edit-image.html -->
+<div th:fragment="edit-image" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="content has-text-centered">
+
+        <form th:action="@{/view/users/{userId}/images/edit(userId=${user.uuid})}" th:object="${editImageForm}" method="post">
+
+            <div class="field">
+                <label class="label">Select Image</label>
+                <div class="control">
+                    <div class="select">
+                        <select th:field="*{imageId}">
+                            <option value="" disabled selected>Select an image</option>
+                            <option th:each="image : ${images}" th:value="${image.id}" th:text="${image.prompt}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Select Mask Image</label>
+                <div class="control">
+                    <div class="select">
+                        <select th:field="*{maskImageId}">
+                            <option value="" disabled selected>Select a mask image</option>
+                            <option th:each="maskImage : ${maskImages}" th:value="${maskImage.id}" th:text="${maskImage.prompt}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Prompt</label>
+                <div class="control">
+                    <textarea class="textarea" th:field="*{prompt}" placeholder="Enter your prompt here..."></textarea>
+                </div>
+            </div>
+
+            <div class="field">
+                <div class="control">
+                    <button class="button is-primary" type="submit">Edit image</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

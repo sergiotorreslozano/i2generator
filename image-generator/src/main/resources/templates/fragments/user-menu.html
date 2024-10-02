@@ -1,0 +1,27 @@
+<!-- user-menu.html -->
+<div th:fragment="user-menu" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="media">
+        <!-- Display the user's icon -->
+        <figure class="media-left">
+            <p class="image is-48x48">
+                <img th:src="${user.icon}" alt="User Icon">
+            </p>
+        </figure>
+
+        <!-- Display the text and user's name -->
+        <div class="media-content">
+            <span th:text="${user.name}"></span>
+        </div>
+    </div>
+
+    <!-- Menu Section -->
+    <aside class="menu">
+        <p class="menu-label">Options</p>
+        <ul class="menu-list">
+            <li><a th:href="@{/view/users/{id}/generate(id=${user.uuid})}" id="menu-generate">Generate Image</a></li>
+            <li><a th:href="@{/view/users/{id}/edit(id=${user.uuid})}" id="menu-edit">Edit Image</a></li>
+            <li><a th:href="@{/view/users/{id}/list(id=${user.uuid})}" id="menu-list">List Images</a></li>
+            <li><a th:href="@{/view/users/{id}/mask(id=${user.uuid})}" id="menu-mask">Masks Images</a></li>
+        </ul>
+    </aside>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Error - Application</title>
+
+    <!-- Link to Bulma -->
+    <link rel="stylesheet" th:href="@{/css/bulma.min.css}">
+
+    <!-- Link to custom styles -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Bulma Hero Section with Primary Color -->
+<section class="hero is-primary is-fullheight">
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title is-1 has-text-white">
+                Error
+            </h1>
+            <p class="subtitle is-4 has-text-white" th:text="|Sorry, there's been an error!|">
+                Sorry, there's been an error!
+            </p>
+
+            <!-- Optionally add a "back to home" button -->
+            <a href="/view/" class="button is-light is-large">Return to Home</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

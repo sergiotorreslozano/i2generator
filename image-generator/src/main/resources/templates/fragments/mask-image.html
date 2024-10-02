@@ -1,0 +1,91 @@
+<!-- edit-image.html -->
+<div th:fragment="mask-image" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <!-- Form for uploading new image -->
+    <!-- th:action="@{'/view/users/' + ${user.uuid} + '/images/upload'}" -->
+    <form id="imageUploadForm"
+          th:action="@{'/view/users/' + ${user.uuid} + '/images/upload'}"
+          method="post"
+          enctype="multipart/form-data"
+          class="box">
+
+        <!-- Hidden input for user ID -->
+        <input type="hidden" name="userId" th:attr="value=${user.uuid}" />
+
+        <!-- Field for selecting an image file -->
+        <div class="field">
+            <label class="label">Upload Image (Max 5MB)</label>
+            <div class="control">
+                <input type="file" name="imageFile" class="input" required />
+            </div>
+        </div>
+
+        <!-- Submit button for uploading the image -->
+        <div class="field">
+            <div class="control">
+                <button type="submit" class="button is-primary">Upload</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Flash Message Display -->
+    <div th:if="${message}" class="notification is-success">
+        <p th:text="${message}"></p>
+        <div th:if="${uploadedImage != null}">
+            <p th:text="'Image uploaded successfully: ' + ${uploadedImage.id}"></p>
+        </div>
+    </div>
+
+
+
+
+    <!-- Table for displaying user images -->
+    <table class="table is-fullwidth is-striped">
+        <thead>
+        <tr>
+            <th>Download</th>
+            <th>Image</th>
+            <th>Prompt</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the images and display prompt, modifiedPrompt, and base64 image -->
+        <tr th:each="image : ${maskImages}">
+            <td>
+                <!-- Download link -->
+                <a th:href="@{/api/images/download/{id}(id=${image.id})}" download class="button is-small is-info">
+                    Download
+                </a>
+            </td>
+            <td>
+                <!-- Display base64 image with click event for modal -->
+                <img th:src="'data:image/jpeg;base64,' + ${image.b64json}"
+                     th:id="'image-' + ${image.id}"
+                     class="image is-clickable"
+                     width="200" height="200"
+                     th:onclick="'openModal(' + ${image.id} + ')'"/>
+
+            </td>
+            <td th:text="${image.prompt}">Prompt</td>
+            <td>
+
+                <!-- Delete button as form submission with DELETE method -->
+                <form th:action="@{/view/users/{userId}/masks/{imageId}(userId=${user.uuid}, imageId=${image.id})}" method="post" >
+                    <!-- Hidden input to simulate DELETE method -->
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit" class="button is-small is-danger">Delete2</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Include the modal fragment here -->
+    <div th:replace="~{fragments/image-modal :: image-modal}"></div>
+
+    <!-- Back to Index Link (at the bottom) -->
+    <a th:href="@{/view/}" class="button is-link is-light">Back to Index</a>
+    <script th:src="@{/js/image-view-modal.js}"></script>
+
+</div>

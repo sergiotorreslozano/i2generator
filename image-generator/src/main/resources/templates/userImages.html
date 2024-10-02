@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>User Images</title>
+
+    <!-- favicon for the page-->
+    <link rel="shortcut icon" type="image/png" th:href="@{/images/velazquez.jpg}"/>
+
+    <!-- Link to Bulma -->
+    <link rel="stylesheet" th:href="@{/css/bulma.min.css}">
+
+    <!-- Link to custom styles -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Main Section with Bulma styling -->
+<section class="section">
+    <div class="container is-fluid">
+
+        <!-- Left section for the user menu (added to the left side) -->
+        <div class="columns">
+            <div class="column is-one-fifths">
+                <!-- Include the user-menu fragment here -->
+                <div th:replace="~{fragments/user-menu :: user-menu}"></div>
+            </div>
+            <div class="column is-four-fifths">
+
+                <div id="main-content">
+                    <!-- All fragments are pre-loaded, but we control visibility via CSS -->
+
+                    <!-- Generate Image Fragment -->
+                    <div id="generate-image-fragment">
+                        <div th:replace="~{fragments/generate-image :: generate-image}"></div>
+                    </div>
+
+                    <!-- Edit Image Fragment (Hidden by default) -->
+                    <div id="edit-image-fragment" class="is-hidden">
+                        <div th:replace="~{fragments/edit-image :: edit-image}"></div>
+                    </div>
+
+                    <!-- List Images Fragment (Hidden by default) -->
+                    <div id="list-images-fragment" class="is-hidden">
+                        <div th:replace="~{fragments/image-table :: image-table}"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Include the modal fragment here -->
+        <div th:replace="~{fragments/image-modal :: image-modal}"></div>
+
+
+    </div>
+
+    <footer class="footer">
+        <div th:replace="~{fragments/footer :: footer}"></div>
+    </footer>
+
+</section>
+
+<!-- Link to external JS file -->
+<script th:src="@{/js/image-view-modal.js}"></script>
+<script th:src="@{/js/menu-navigation.js}"></script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users</title>
+
+    <!-- Link to Bulma -->
+    <link rel="stylesheet" th:href="@{/css/bulma.min.css}">
+
+    <!-- Link to custom styles -->
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<!-- Bulma Container -->
+<section class="section">
+    <div class="container">
+        <h1 class="title">User List</h1>
+
+        <!-- Bulma list of users -->
+        <ul>
+            <!-- Loop through users and display them -->
+            <li th:each="user : ${users}" class="media user-item">
+                <figure class="media-left">
+                    <p class="image is-64x64">
+                        <a th:href="@{/view/users/{id}/generate(id=${user.uuid})}">
+                            <img th:src="${user.icon}" alt="User Icon"/>
+                        </a>
+                    </p>
+                </figure>
+                <div class="media-content">
+                    <div class="content">
+                        <a th:href="@{/view/users/{id}/generate(id=${user.uuid})}">
+                            <strong th:text="${user.name}">User Name</strong>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</section>
+
+</body>
+</html>
