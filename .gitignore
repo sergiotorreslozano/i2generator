@@ -33,4 +33,6 @@ build/
 .vscode/
 .DS_Store
 
-./iamge-generator/data
+/image-generator/data
+config.properties
+secrets.properties
