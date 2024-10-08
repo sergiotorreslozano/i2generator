@@ -28,7 +28,6 @@ Before you start, ensure you have the following:
 1. **Clone the repository**:
    ```bash
    git clone https://github.com/sergiotorreslozano/i2generator.git
-   cd ai-image-generation-playground
 
 2. **Configure OpenAI API Key**:  
 You'll need to pass your OpenAI API key when running the application. It is required to generate images using AI.
@@ -38,6 +37,7 @@ You'll need to pass your OpenAI API key when running the application. It is requ
 ## Running the Application
 To run the application, use the following Maven command, replacing your-api-key with your actual OpenAI API Key:
    ```bash
+   cd image-generator
    mvn spring-boot:run -DOPENAI_API_KEY=your-api-key  
    ```
 Once the application is running, you can access the image generation and editing interface by navigating to:
@@ -62,7 +62,7 @@ This project uses an embedded H2 database for storing data related to the genera
 - Implement more advanced image editing features.
 - Enhance security and performance for production deployment.
 - Expand AI capabilities to support other models and more advanced features.
-
+- Move away from storing the images in H2
 ---
 
 ## Contributing
