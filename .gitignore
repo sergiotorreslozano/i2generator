@@ -38,3 +38,4 @@ config.properties
 secrets.properties
 ../data/
 !../data/
+data
