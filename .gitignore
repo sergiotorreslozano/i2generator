@@ -36,3 +36,5 @@ build/
 /image-generator/data
 config.properties
 secrets.properties
+../data/
+!../data/
