@@ -12,7 +12,7 @@ cd "$(dirname "$0")"/.. || {
 
 # Run Maven build
 echo "Building project with Maven..."
-mvn --quiet clean install
+mvn -q clean install
 
 # Check if Maven build was successful
 if [ $? -ne 0 ]; then

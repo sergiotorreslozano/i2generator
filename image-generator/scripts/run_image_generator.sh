@@ -86,7 +86,7 @@ fi
 # Start the JAR in the background with the OPENAI_API_KEY environment variable
 echo "Starting $JAR_NAME with OPENAI_API_KEY ..."
 #nohup java -jar "$WORK_DIR/$JAR_NAME" "$OPENAI_API_KEY" > "$LOG_FILE" 2>&1 &
-nohup java -Dspring.ai.openai.api-key="$OPENAI_API_KEY" -jar "$WORK_DIR/$JAR_NAME" > "$LOG_FILE" 2>&1 &
+nohup java -server -Dspring.ai.openai.api-key="$OPENAI_API_KEY" -jar "$WORK_DIR/$JAR_NAME" > "$LOG_FILE" 2>&1 &
 
 
 # Get the process ID (PID) of the last background job
